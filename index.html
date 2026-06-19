@@ -671,7 +671,7 @@
 const KEY='brujula_v0a_v1';
 const KEYLS='brujula_td_key';
 var IS_MOBILE=/Android|iPhone|iPad|iPod|Mobile|Silk|SamsungBrowser/i.test(navigator.userAgent||'');
-var REFRESH_MS=IS_MOBILE?900000:300000; // 15 min en celular, 5 min en PC (ahorra datos móviles)
+var REFRESH_MS=300000; // 5 min, igual en celular y PC
 const DEF={settings:{capital:1000,riskPct:0.5,fx:945,pipValue:10,maxPerDay:2,dayLimit:1,weekLimit:3,monthLimit:6,minRR:1.5,costPips:1.5},trades:[],patience:[],xp:[]};
 let db=load();
 var elKey,elStatus,elDemo, chart=null,candleS=null,supS=null,resS=null,DATA=[];
@@ -1822,9 +1822,9 @@ function closeGuide(){var ov=document.getElementById('guideOverlay');if(ov)ov.st
   tickClock();if(!window.__clk)window.__clk=setInterval(tickClock,1000);})();
 applyTheme(THEME);
 loadEvents();
-if((elKey.value||'').trim()){var au=document.getElementById('auto');if(au&&!IS_MOBILE){au.checked=true;if(window.__auto)clearInterval(window.__auto);window.__auto=setInterval(function(){if((elKey.value||'').trim()&&!elDemo.checked)loadReal();},REFRESH_MS);}loadReal();}else{elDemo.checked=true;loadDemo();}
+if((elKey.value||'').trim()){var au=document.getElementById('auto');if(au){au.checked=true;if(window.__auto)clearInterval(window.__auto);window.__auto=setInterval(function(){if((elKey.value||'').trim()&&!elDemo.checked)loadReal();},REFRESH_MS);}loadReal();}else{elDemo.checked=true;loadDemo();}
 renderSrc();
-(function(){var ae=document.getElementById('autoEvery');if(ae)ae.textContent=IS_MOBILE?'15 min':'5 min';})();
+(function(){var ae=document.getElementById('autoEvery');if(ae)ae.textContent='5 min';})();
 if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}
 </script>
 </body>
