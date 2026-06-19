@@ -438,9 +438,36 @@
   .evchip b{color:var(--ink)}
   .evchip.soon{border-color:color-mix(in srgb,var(--danger) 55%,transparent)}
   .evchip.soon b{color:var(--danger)}
-  /* ============ OPTIMIZACIÓN MÓVIL (Android/Samsung) ============ */
+  /* ============ OPTIMIZACIÓN MÓVIL (Android/Samsung S22 · 360px) ============ */
   @media(max-width:480px){
-    /* tipografía: subir lo que hoy queda ilegible en celular */
+    /* menos relleno: ganar ancho y reducir scroll en pantallas chicas */
+    .wrap{padding:max(14px,calc(env(safe-area-inset-top) + 6px)) max(12px,env(safe-area-inset-right)) max(34px,calc(env(safe-area-inset-bottom) + 16px)) max(12px,env(safe-area-inset-left))}
+    .card{padding:13px 14px;margin-bottom:10px}
+    .sec-num{margin:12px 2px 7px}
+
+    /* --- cabecera compacta (antes ocupaba casi una pantalla entera) --- */
+    header.cmd{padding:11px 13px;gap:8px}
+    .cmd-top{gap:9px}
+    .cmd-id .mk{width:34px;height:34px;font-size:18px}
+    .cmd-id .brand{font-size:15px}
+    .cmd-right{gap:6px}
+    .cmd-info{gap:5px}
+    .cmd-actions{gap:5px}
+    #sysclock{padding:4px 7px;font-size:10.5px}
+    .cmd-info .chip{padding:4px 8px;font-size:10.5px;letter-spacing:.2px}
+    #pairChip{display:none}            /* redundante: el instrumento ya sale en el gráfico */
+    .cmd-xp{margin-top:2px}
+    .cmd-xp .xptop{font-size:11.5px}
+    #rachaText{font-size:11px}
+
+    /* --- semáforo (señal) más compacto pero legible --- */
+    .semaforo{padding:15px 16px;gap:12px}
+    .semaforo .radar{width:52px;height:52px}
+    .semaforo .sem-h{font-size:20px}
+    .semaforo .sem-s{font-size:13.5px;margin-top:6px}
+    .sem-host{margin-bottom:10px}
+
+    /* tipografía legible */
     .ohlc{font-size:13.5px;letter-spacing:0}
     .vlbl{font-size:13px}
     .vsub{font-size:12.5px;color:var(--ink)}
@@ -448,20 +475,27 @@
     .foot{font-size:12.5px;color:var(--muted)}
     .toggle{font-size:13px}
     .sesst{font-size:11px}
-    .sec-num,.prob-title,details.guia>summary,details#cfg>summary,details#ajustesD>summary{font-size:14px}
-    .sec,#load,#analizar,.seg button,.btn-hud,.chip,#histBtn,#helpBtn,#theme{font-size:13.5px}
-    .semaforo .sem-s{font-size:14px}
-    /* chip de sesión: su propia línea bajo el precio, sin empujar el ancho */
+    .legend{gap:7px 12px;font-size:11px;margin-top:8px}
+    .sec-num,.prob-title,details.guia>summary,details#cfg>summary,details#ajustesD>summary{font-size:13.5px}
+    .sec,#load,#analizar,.seg button,.btn-hud,.chip,#histBtn,#helpBtn,#theme{font-size:13px}
+
+    /* chip de sesión en su propia línea, sin empujar el ancho */
     .schip{font-size:12px;letter-spacing:.2px;flex-basis:100%;justify-content:flex-start;margin-top:3px}
-    /* objetivos táctiles cómodos (>=44px) para el pulgar */
-    nav button,button.sec,.sec{min-height:44px;padding:11px 14px}
-    .seg button{padding:11px 15px}
-    .icobtn{min-width:44px;height:44px;padding:0 10px}
-    #helpBtn{width:40px;height:40px}
-    .chart-tools button{padding:9px 12px;min-height:40px}
-    .rchip{padding:12px 14px}
-    .btn-aar{padding:24px 12px}
-    button.act{padding:14px}
+
+    /* línea de datos y temporalidad apiladas y a lo ancho */
+    .dl-left,.dl-right{width:100%}
+    #tf{flex:1 1 100%;display:flex;width:100%;gap:2px}      /* 6 botones que SIEMPRE caben (reparto igual) */
+    #tf button{flex:1 1 0;min-width:0;padding:9px 2px;letter-spacing:0}
+
+    /* objetivos táctiles cómodos (~40px) sin inflar la altura */
+    nav button,button.sec,.sec{min-height:40px;padding:9px 12px}
+    .icobtn{min-width:40px;height:40px;padding:0 9px}
+    #helpBtn{width:38px;height:38px}
+    .chart-tools{flex-wrap:wrap}
+    .chart-tools button{padding:8px 10px;min-height:38px}
+    .rchip{padding:11px 13px}
+    .btn-aar{padding:20px 12px}
+    button.act{padding:13px}
   }
   /* feedback táctil inmediato (el :hover no se dispara al tocar) */
   @media(hover:none){
