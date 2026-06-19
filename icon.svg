@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="38%" cy="30%" r="85%">
+      <stop offset="0%" stop-color="#15180f"/>
+      <stop offset="100%" stop-color="#0a0b0a"/>
+    </radialGradient>
+    <linearGradient id="needle" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d8ff5a"/>
+      <stop offset="100%" stop-color="#9bcc16"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- background -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect x="6" y="6" width="500" height="500" rx="108" fill="none" stroke="#c2f032" stroke-opacity="0.18" stroke-width="3"/>
+  <!-- compass ring -->
+  <circle cx="256" cy="256" r="150" fill="none" stroke="#c2f032" stroke-opacity="0.30" stroke-width="6"/>
+  <circle cx="256" cy="256" r="150" fill="none" stroke="#c2f032" stroke-opacity="0.9" stroke-width="6" stroke-dasharray="3 24" stroke-linecap="round"/>
+  <!-- cardinal ticks -->
+  <g stroke="#c2f032" stroke-opacity="0.55" stroke-width="7" stroke-linecap="round">
+    <line x1="256" y1="86" x2="256" y2="116"/>
+    <line x1="256" y1="396" x2="256" y2="426"/>
+    <line x1="86" y1="256" x2="116" y2="256"/>
+    <line x1="396" y1="256" x2="426" y2="256"/>
+  </g>
+  <!-- needle -->
+  <g filter="url(#glow)">
+    <polygon points="256,128 292,256 256,300 220,256" fill="url(#needle)"/>
+    <polygon points="256,384 220,256 256,212 292,256" fill="#3a4a12"/>
+  </g>
+  <circle cx="256" cy="256" r="18" fill="#0a0b0a" stroke="#c2f032" stroke-width="5"/>
+  <circle cx="256" cy="256" r="6" fill="#c2f032"/>
+</svg>
